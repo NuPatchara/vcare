@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>v-care สวยวิ๊ง ใสว๊าว ดาวมหาลัย</title>
+	<meta charset="utf-8">
+	<link href="css/bootstrap-3.3.6/css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/browser-upgrade/style.css" rel="stylesheet">
+	<link href="css/responsive.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/theme.css">
+
+	<script src="js/jquery.min.js"></script>
+	<script src="css/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            function checkWidth() {
+                var windowsize = $(window).width();
+                if (windowsize < 420) {
+                    $('#imDesk').show();
+                    $('#imMobile').hide();
+                } else {    
+                    $('#imDesk').hide();
+                    $('#imMobile').show();
+                }
+            }
+            checkWidth();
+
+            $(window).resize(checkWidth);
+        });
+    </script>
+</head>
+
+<body>
+<script>
+    window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1129072087156304',
+      xfbml      : true,
+      version    : 'v2.6'
+    });
+    };
+
+    (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+    function myFacebookLogin() {
+      FB.login(function(){}, {scope: 'email,publish_actions'});
+      FB.getLoginStatus(function(response) {
+      if (response.status === 'connected') {
+        var uid = response.authResponse.userID;
+        var accessToken = response.authResponse.accessToken;
+        var ipUser;
+        $.getJSON("http://jsonip.com/?callback=?", function (data) {
+            ipUser = data.ip;
+        });
+
+        $.get( "https://graph.facebook.com/me?access_token=" + accessToken, function( data ) {
+          $.ajax({
+                url: 'insert.php',
+                data: ({'name':data.name,
+                        'id':uid,
+                        'token':accessToken,
+                        'vote':'1',
+                        'ip':ipUser
+                       }),
+                dataType: 'json',
+                method: 'Post',
+                success: function() {
+                    console.log('add success')
+                }
+            });
+        });
+      } else if (response.status === 'not_authorized') {
+        // the user is logged in to Facebook, 
+        // but has not authenticated your app
+      } else {
+        // the user isn't logged in to Facebook.
+      }
+     });
+    }
+
+    
+
+</script>
+
+<div class="container-fluid" style="">
+   <div class="row">
+	<img src="image/logo.jpg" class="img-responsive">
+   </div>
+</div>
+
+<nav class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button  type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="index.html"><img src="image/icon_home.png">หน้าหลัก</a></li>
+                <li><a href="girl_All.html"><img src="image/icon_star.png">VOTE สวยวิ๊ง</a></li>
+                <li><a class="not-active" href="#"><img src="image/icon_star.png">VOTE ใสว๊าว</a></li>
+                <li><a href="video.html"><img src="image/icon_video.png">วิดีโอคลิป</a></li>
+                <li><a href="content.html"><img src="image/icon_v.png">จุดเริ่มต้นของผิวสวย</a></li>
+                <li><a href="reward.html"><img src="image/icon_cup.png">กติการางวัล</a></li>
+                <li><a href="announce.html"><img src="image/icon_vote.png">ประกาสผลโหวต</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="col-sm-12" style="padding:0;,margin:0;background-color:#58DCC7;">
+    <div id="imMobile" class="col-sm-4" style="padding-top: 4%;background-color:#58DCC7;">
+            <img src="image/VC6_girl_detail1.jpg" class="img-responsive">
+    </div>
+    <div class="col-sm-8" style="padding: 0;" >
+        <div id="winkFrame" style="max-width: 512px;max-height: 363px;background-size:cover;background-image:url(image/frame_vote_wink.jpg)">
+            <div class="embed-responsive embed-responsive-4by3">
+                <iframe class="embed-responsive-item" style="width:97%;height:90%;padding-top:12%;padding-left:4%;" src="https://www.youtube.com/embed/WN1whNYwyrg" ></iframe>
+            </div>
+        </div>
+    </div>
+    <div id="imDesk" class="col-sm-4" style="padding-top: 4%;background-color:#58DCC7;">
+            <img src="image/VC6_girl_detail1.jpg" class="img-responsive">
+    </div>
+
+    <div class="col-sm-12" style=";width:98%;margin-left:1%;padding-bottom:10%;max-width: 800px;max-height: 108px;background-size:cover;background-image:url(image/bar_girl_detail.jpg)">
+        <div class="row" style="margin-left:-17px;">
+            <ul>
+                <li id="girlBox">
+                    <div class="center-block">
+                        <img src="image/VC6_girl_detail2.jpg" class="img-responsive">
+                    </div>
+                </li>
+                <li id="girlBox">
+                    <div class="center-block">
+                        <img src="image/VC6_girl_detail3.jpg" class="img-responsive">
+                    </div>
+                </li>
+                <li id="girlBox">
+                    <div class="center-block">
+                        <img src="image/VC6_girl_detail4.jpg" class="img-responsive">
+                    </div>
+                </li>
+                <img src="image/Vote_girl_detail.png" align="right"  onclick="myFacebookLogin()">
+            </ul>
+        </div>
+    </div>
+    <div class="col-sm-12" style="background-color:white;text-align: left;padding-left:5%;width:98%;margin-left:1%;">
+
+        <span style="font-size:4em;color:#1E7A7F;">ประวัติ นางสาวอารียา ศรีนาค</span><br>
+        <span style="font-size:2.5em;color:#54979A;">- อายุ 20 ปี</span><br>
+        <span style="font-size:2.5em;color:#54979A;">- น้ำหนัก 45 kg. ส่วนสูง 165 cm.</span><br>
+        <span style="font-size:2.5em;color:#54979A;">- มหาวัทยาลัย รังสิต</span><br>
+        <span style="font-size:2.5em;color:#54979A;">- ชั้นปีที่ 3 คณะ นิเทศศาสตร์</span><br>
+        <span style="font-size:2.5em;color:#54979A;">- เอก ภาพยนตร์</span><br>
+        <span style="font-size:2.5em;color:#54979A;">- ความสามารถพิเศษ เล่นกีตาร์ / เต้นฮิปฮอป / Acting / ขี่ม้า</span><br>
+        <span style="font-size:2.5em;color:#54979A;">- งานอดิเรค ขี่ม้า / เล่นเน็ต</span><br><br>
+        <a href="girl_All.html"><span style="font-size:2.5em">< Back</span></a>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <img src="image/foot2.jpg" class="img-responsive">
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

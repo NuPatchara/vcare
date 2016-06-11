@@ -1,0 +1,23 @@
+<html>
+<head>
+<title>test</title>
+</head>
+<body>
+    <?php
+    $host = "localhost";
+    $username = "mouse2mout";
+    $password = "m2mBbM-s";
+    $objConnect = mysql_connect($host,$username,$password);
+
+    if($objConnect)
+    {
+        echo "MySQL Connected";
+    }
+    else
+    {
+        echo "MySQL Connect Failed : Error : ".mysql_error();
+    }
+    mysql_close($objConnect);
+    ?>
+</body>
+</html>

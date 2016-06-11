@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>v-care สวยวิ๊ง ใสว๊าว ดาวมหาลัย</title>
+	<meta charset="utf-8">
+	<link href="http://vcarewinkwow.com/css/bootstrap-3.3.6/css/bootstrap.min.css" rel="stylesheet">
+	<link href="http://vcarewinkwow.com/css/browser-upgrade/style.css" rel="stylesheet">
+	<link href="http://vcarewinkwow.com/css/responsive.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="http://vcarewinkwow.com/css/theme.css">
+
+	<script src="http://vcarewinkwow.com/js/jquery.min.js"></script>
+	<script src="http://vcarewinkwow.com/css/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<div class="container-fluid" style="width:800px; height:500px;background: #CCC;position:relative">
+		<a id="vote_home2" href=""></a> 
+
+
+</div>
+<style type="text/css">
+#vote_home2{
+position:absolute;
+left:200px;
+top: 400px;
+display: block;
+width: 249px;
+height:52px;
+background: transparent url(vote-btn.png) no-repeat scroll 0 0;
+}
+</style>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.spritely/0.6.8/jquery.spritely.min.js"></script>
+<script type="text/javascript">
+<!--
+	$('#vote_home2').sprite({
+		fps: 8,
+		no_of_frames: 6,
+		pause: 3000,
+		on_last_frame: function(obj) {
+			obj.spStop();
+			setTimeout(function(){
+				$('#vote_home2').spStart();
+			}, 3000);
+		}
+	});
+//-->
+</script>
+</body>
+</html>
